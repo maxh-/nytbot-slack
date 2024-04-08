@@ -1,5 +1,7 @@
 # Slack channel highscores for Wordle etc.
 
+<img src="./screenshot.png" width="430">
+
 ## Features 
 
 ### Game support
