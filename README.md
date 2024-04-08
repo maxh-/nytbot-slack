@@ -1,4 +1,4 @@
-# Slack channel highscores for Wordle etc.
+# Slack channel highscores for Wordle (etc.)
 
 <img src="./screenshot.png" width="430">
 
