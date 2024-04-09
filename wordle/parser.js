@@ -1,3 +1,5 @@
+const { getEmojiGroups } = require("../utility");
+
 module.exports = {
     getWordleId,
     getResult,
@@ -25,14 +27,14 @@ function getWordleId(input) {
  * @returns {number?} 1-6, or 7 for fail
  */
 function getResult(input) {
-    const emojiRows = input?.match(/^.*((?::\w*square\w*:){5}).*$/gm);
+    const emojiRows = getEmojiGroups(input, "square", 5);
     const guesses = emojiRows?.length;
 
     if (!guesses || guesses < 1 || guesses > 6) {
         return null; // invalid
     }
 
-    const isSolved = /(?::\w*green_square\w*:){5}/gm.test(emojiRows[emojiRows.length - 1]);
+    const isSolved = getEmojiGroups(emojiRows[emojiRows.length - 1], "green_square", 5);
 
     if (!isSolved && guesses < 6) {
         return null; // incomplete

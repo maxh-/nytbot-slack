@@ -19,4 +19,12 @@ sequelize.define("WordleResult", {
     result: { type: DataTypes.INTEGER },
 });
 
+sequelize.define("ConnectionsResult", {
+    team: { type: DataTypes.STRING },
+    channel: { type: DataTypes.STRING },
+    user: { type: DataTypes.STRING },
+    connectionsId: { type: DataTypes.INTEGER },
+    result: { type: DataTypes.INTEGER },
+});
+
 module.exports = sequelize;

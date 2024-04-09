@@ -7,7 +7,7 @@
 ### Game support
 
 - [x] Wordle
-- [ ] Connections
+- [x] Connections
 - [ ] The Mini
 - [ ] The Crossword
 

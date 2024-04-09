@@ -1,6 +1,7 @@
 const { getWordleId, getResult } = require("./parser");
 const { Op } = require("sequelize");
 const db = require("../db");
+const { avg } = require("../utility");
 
 module.exports = async ({ event, message, say }) => {
     const wordleId = getWordleId(message.text);
@@ -60,8 +61,4 @@ function getReaction(result) {
         case 7: return "💀";
         default: return "🧐";
     }
-}
-
-function avg(arr) {
-    return ((arr?.reduce((a, b) => a + b, 0) / arr.length) ?? 0);
 }
