@@ -17,8 +17,9 @@ async function start() {
     // Handlers for supported games
     slackApp.message("Wordle", require("./wordle/handler"));
     slackApp.message("Connections", require("./connections/handler"));
+    slackApp.message("New York Times Mini", require("./the-mini/handler"));
 
-    await slackApp.start(process.env.PORT || 8080);
+    await slackApp.start();
     console.log("✅ Started nytbot");
 };
 

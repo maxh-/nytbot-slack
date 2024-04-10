@@ -27,4 +27,12 @@ sequelize.define("ConnectionsResult", {
     result: { type: DataTypes.INTEGER },
 });
 
+sequelize.define("TheMiniResult", {
+    team: { type: DataTypes.STRING,  },
+    channel: { type: DataTypes.STRING },
+    user: { type: DataTypes.STRING },
+    theMiniDate: { type: DataTypes.DATEONLY },
+    resultInSeconds: { type: DataTypes.INTEGER },
+});
+
 module.exports = sequelize;
