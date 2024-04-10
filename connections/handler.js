@@ -42,7 +42,7 @@ module.exports = async ({ event, message, say }) => {
             user: event.user,
             channel: event.channel,
             connectionsId: {
-                [Op.gt]: connectionsId - 30,
+                [Op.gt]: connectionsId - 7,
             },
         },
     });
@@ -50,7 +50,7 @@ module.exports = async ({ event, message, say }) => {
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*Connections ${connectionsId}: ${result} mistakes*`
-        + `\n_30 day average: ${avg(last30Results.map(x => x.result)).toFixed(3)}_`);
+        + `\n_7 day average: ${avg(last30Results.map(x => x.result)).toFixed(3)}_`);
 }
 
 function getReaction(result) {

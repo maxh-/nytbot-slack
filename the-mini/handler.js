@@ -41,13 +41,13 @@ module.exports = async ({ event, message, say }) => {
             channel: event.channel,
         },
         order: [["the_mini_date", "DESC"]],
-        limit: 30,
+        limit: 7,
     });
 
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*The Mini, ${formatDate(date)}: ${formatTime(result)}*`
-        + `\n_30 day average: ${formatTime(avg(last30Results.map(x => x.resultInSeconds)))}_`);
+        + `\n_7 day average: ${formatTime(avg(last30Results.map(x => x.resultInSeconds)))}_`);
 }
 
 const getReaction = result =>

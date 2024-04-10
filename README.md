@@ -8,7 +8,7 @@
 
 - [x] Wordle
 - [x] Connections
-- [ ] The Mini
+- [x] The Mini
 - [ ] The Crossword
 
 ### Etc

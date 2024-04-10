@@ -40,7 +40,7 @@ module.exports = async ({ event, message, say }) => {
             user: event.user,
             channel: event.channel,
             wordleId: {
-                [Op.gt]: wordleId - 30,
+                [Op.gt]: wordleId - 7,
             },
         },
     });
@@ -48,7 +48,7 @@ module.exports = async ({ event, message, say }) => {
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*Wordle ${wordleId}: ${result}/6*`
-        + `\n_30 day average: ${avg(last30Results.map(x => x.result)).toFixed(3)}_`);
+        + `\n_7 day average: ${avg(last30Results.map(x => x.result)).toFixed(3)}_`);
 }
 
 function getReaction(result) {
