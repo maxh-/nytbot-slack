@@ -2,7 +2,7 @@ module.exports = {
     getDate,
     getResultingTime,
 };
-// I solved the Sunday 3/02/2024 New York Times Daily Crossword
+
 /**
  * Parse Date from The Crossword result
  * 
@@ -29,7 +29,15 @@ function getDate(input) {
  * @returns {number?} Resulting time in seconds, or null if invalid input
  */
 function getResultingTime(input) {
-    const parsedTime = /in (?<hours>\d+?)?:?(?<minutes>\d+?):(?<seconds>\d+)/g.exec(input);
+    const parsedTime =
+        /in ((?<hours>\d+):)?(?<minutes>\d+?):(?<seconds>\d+)/g
+            .exec(input);
 
-    return +parsedTime.groups["hours"] * 60 * 60 + +parsedTime.groups["minutes"] * 60 + +parsedTime.groups["seconds"] || null;
+    if (!parsedTime) {
+        return null;
+    }
+
+    return (+parsedTime.groups["hours"] || 0) * 60 * 60
+        + +parsedTime.groups["minutes"] * 60
+        + +parsedTime.groups["seconds"] || null;
 }

@@ -7,6 +7,8 @@ describe("The Crossword parser", () => {
     });
 
     test("Parse result", () => {
+        expect(getResultingTime("I solved the Sunday 3/03/2024 New York Times Daily Crossword in 49:33!")).toBe(2973);
+        expect(getResultingTime("I solved the Sunday 3/03/2024 New York Times Daily Crossword in 0:49:33!")).toBe(2973);
         expect(getResultingTime("I solved the Sunday 3/03/2024 New York Times Daily Crossword in 2:21:39!")).toBe(8499);
     });
 
