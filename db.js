@@ -35,4 +35,12 @@ sequelize.define("TheMiniResult", {
     resultInSeconds: { type: DataTypes.INTEGER },
 });
 
+sequelize.define("TheCrosswordResult", {
+    team: { type: DataTypes.STRING,  },
+    channel: { type: DataTypes.STRING },
+    user: { type: DataTypes.STRING },
+    theCrosswordDate: { type: DataTypes.DATEONLY },
+    resultInSeconds: { type: DataTypes.INTEGER },
+});
+
 module.exports = sequelize;

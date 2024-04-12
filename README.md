@@ -9,7 +9,7 @@
 - [x] Wordle
 - [x] Connections
 - [x] The Mini
-- [ ] The Crossword
+- [x] The Crossword
 
 ### Etc
 

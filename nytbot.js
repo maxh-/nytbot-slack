@@ -18,6 +18,7 @@ async function start() {
     slackApp.message("Wordle", require("./wordle/handler"));
     slackApp.message("Connections", require("./connections/handler"));
     slackApp.message("New York Times Mini", require("./the-mini/handler"));
+    slackApp.message("New York Times Daily Crossword", require("./the-crossword/handler"));
 
     await slackApp.start();
     console.log("✅ Started nytbot");
