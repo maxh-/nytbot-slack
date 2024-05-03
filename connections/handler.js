@@ -35,14 +35,14 @@ module.exports = async ({ event, message, say }) => {
         text: message.text,
     });
 
-    const last30Results = await db.models.ConnectionsResult.findAll({
+    const recentResults = await db.models.ConnectionsResult.findAll({
         where: {
             team: event.team,
             user: event.user,
             user: event.user,
             channel: event.channel,
             connectionsId: {
-                [Op.gt]: connectionsId - 7,
+                [Op.gt]: connectionsId - 14,
             },
         },
     });
@@ -50,7 +50,7 @@ module.exports = async ({ event, message, say }) => {
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*Connections ${connectionsId}: ${result} mistakes*`
-        + `\n_7 day average: ${avg(last30Results.map(x => x.result)).toFixed(3)}_`);
+        + `\n_14 day average: ${avg(recentResults.map(x => x.result)).toFixed(3)}_`);
 }
 
 function getReaction(result) {

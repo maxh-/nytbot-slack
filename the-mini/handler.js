@@ -33,7 +33,7 @@ module.exports = async ({ event, message, say }) => {
         resultInSeconds: result,
     });
 
-    const last30Results = await db.models.TheMiniResult.findAll({
+    const recentResults = await db.models.TheMiniResult.findAll({
         where: {
             team: event.team,
             user: event.user,
@@ -41,15 +41,13 @@ module.exports = async ({ event, message, say }) => {
             channel: event.channel,
         },
         order: [["the_mini_date", "DESC"]],
-        limit: 7,
+        limit: 14,
     });
-
-    console.log("result is", result);
 
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*The Mini, ${formatDate(date)}: ${formatTime(result)}*`
-        + `\n_7 day average: ${formatTime(avg(last30Results.map(x => x.resultInSeconds)))}_`);
+        + `\n_14 day average: ${formatTime(avg(recentResults.map(x => x.resultInSeconds)))}_`);
 }
 
 const getReaction = result =>

@@ -33,7 +33,7 @@ module.exports = async ({ event, message, say }) => {
         resultInSeconds: result,
     });
 
-    const last30Results = await db.models.TheCrosswordResult.findAll({
+    const recentResults = await db.models.TheCrosswordResult.findAll({
         where: {
             team: event.team,
             user: event.user,
@@ -41,13 +41,13 @@ module.exports = async ({ event, message, say }) => {
             channel: event.channel,
         },
         order: [["the_crossword_date", "DESC"]],
-        limit: 7,
+        limit: 14,
     });
 
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*The Crossword, ${formatDate(date)}: ${formatTime(result)}*`
-        + `\n_7 day average: ${formatTime(avg(last30Results.map(x => x.resultInSeconds)))}_`);
+        + `\n_14 day average: ${formatTime(avg(recentResults.map(x => x.resultInSeconds)))}_`);
 }
 
 const getReaction = result =>
