@@ -1,5 +1,5 @@
 const { getResultingTime, getDate } = require("./parser");
-const { avg, formatTime } = require("../utility");
+const { avg, formatTime, formatDate } = require("../utility");
 const db = require("../db");
 
 module.exports = async ({ event, message, say }) => {
@@ -52,6 +52,3 @@ module.exports = async ({ event, message, say }) => {
 
 const getReaction = result =>
     result < 60 ? "🙌" : "✅";
-
-const formatDate = date =>
-    date.toLocaleString(undefined, { month: "short", day: "numeric" });

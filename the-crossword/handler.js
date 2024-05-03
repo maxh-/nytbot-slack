@@ -1,5 +1,5 @@
 const { getResultingTime, getDate } = require("./parser");
-const { avg, formatTime } = require("../utility");
+const { avg, formatTime, formatDate } = require("../utility");
 const db = require("../db");
 
 module.exports = async ({ event, message, say }) => {
@@ -50,8 +50,4 @@ module.exports = async ({ event, message, say }) => {
         + `\n_14 day average: ${formatTime(avg(recentResults.map(x => x.resultInSeconds)))}_`);
 }
 
-const getReaction = result =>
-    result < 3600 ? "🙌" : "✅";
-
-const formatDate = date =>
-    date.toLocaleString(undefined, { month: "short", day: "numeric" });
+const getReaction = result => result < 3600 ? "🙌" : "✅";

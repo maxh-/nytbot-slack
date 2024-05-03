@@ -1,5 +1,8 @@
 module.exports.avg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
 
+module.exports.formatDate = date =>
+    date.toLocaleString(undefined, { month: "short", day: "numeric" });
+
 module.exports.formatTime = (timeInSeconds) => {
     const hours = Math.floor(timeInSeconds / 3600);
     const minutes = Math.floor((timeInSeconds % 3600) / 60);
