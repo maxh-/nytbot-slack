@@ -1,5 +1,5 @@
 const { getResultingTime, getDate } = require("./parser");
-const { avg } = require("../utility");
+const { avg, formatTime } = require("../utility");
 const db = require("../db");
 
 module.exports = async ({ event, message, say }) => {
@@ -44,6 +44,8 @@ module.exports = async ({ event, message, say }) => {
         limit: 7,
     });
 
+    console.log("result is", result);
+
     await say(
         `<@${event.user}> ${getReaction(result)}`
         + `\n*The Mini, ${formatDate(date)}: ${formatTime(result)}*`
@@ -55,6 +57,3 @@ const getReaction = result =>
 
 const formatDate = date =>
     date.toLocaleString(undefined, { month: "short", day: "numeric" });
-
-const formatTime = seconds =>
-    `${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, "0")}`;

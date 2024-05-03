@@ -1,5 +1,5 @@
 const { getResultingTime, getDate } = require("./parser");
-const { avg } = require("../utility");
+const { avg, formatTime } = require("../utility");
 const db = require("../db");
 
 module.exports = async ({ event, message, say }) => {
@@ -55,11 +55,3 @@ const getReaction = result =>
 
 const formatDate = date =>
     date.toLocaleString(undefined, { month: "short", day: "numeric" });
-
-const formatTime = totalSeconds => {
-    const hours = Math.floor(totalSeconds / (60 * 60));
-    const minutes = Math.floor(((totalSeconds - (hours * 60 * 60)) / 60));
-    const seconds = Math.floor(((totalSeconds - (minutes * 60)) - (hours * 60 * 60)));
-
-    return `${hours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-};
